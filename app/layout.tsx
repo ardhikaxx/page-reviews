@@ -8,8 +8,40 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Testimoni & Portofolio | Yanuar Ardhika",
-  description: "Kumpulan testimoni dan ulasan dari client yang telah bekerja sama dan menggunakan jasa Yanuar Ardhika.",
+  metadataBase: new URL("https://page-reviews.vercel.app"),
+  title: {
+    default: "Testimoni & Review Klien | Yanuar Ardhika",
+    template: "%s | Yanuar Ardhika",
+  },
+  description: "Kumpulan testimoni dan ulasan otentik dari klien yang telah bekerja sama dan menggunakan jasa profesional Yanuar Ardhika.",
+  keywords: [
+    "testimoni jasa",
+    "review klien",
+    "yanuar ardhika",
+    "portofolio web developer",
+    "jasa website",
+    "ulasan klien"
+  ],
+  authors: [{ name: "Yanuar Ardhika", url: "https://yanuar-ardhika.vercel.app" }],
+  creator: "Yanuar Ardhika",
+  openGraph: {
+    type: "website",
+    locale: "id_ID",
+    url: "https://page-reviews.vercel.app",
+    title: "Testimoni & Review Klien | Yanuar Ardhika",
+    description: "Kumpulan ulasan dan testimoni otentik dari klien yang telah bekerja sama dan menggunakan jasa profesional Yanuar Ardhika.",
+    siteName: "Testimoni Jasa - Yanuar Ardhika",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Testimoni & Review Klien | Yanuar Ardhika",
+    description: "Kumpulan ulasan dan testimoni otentik dari klien yang telah bekerja sama dan menggunakan jasa profesional Yanuar Ardhika.",
+    creator: "@ardhikaxx",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

@@ -105,11 +105,19 @@ export default function Home() {
       <Navbar />
       {/* Hero Section */}
       <section className="pt-8 pb-4 px-4 text-white">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-900/30 text-red-400 text-sm font-medium mb-4 border border-red-900/50">
+        <div className="max-w-4xl mx-auto text-center space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-900/30 text-red-400 text-sm font-medium border border-red-900/50">
             <MessageSquareQuote className="w-4 h-4" />
-            <span>Cerita Mereka Setelah Menggunakan Jasa Kami</span>
+            <span>Testimoni & Pengalaman Klien</span>
           </div>
+
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            Cerita Mereka Setelah Menggunakan <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-rose-400">Jasa Kami</span>
+          </h1>
+
+          <p className="text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+            Transparansi dan kepuasan klien adalah prioritas utama. Lihat ulasan nyata tentang pengalaman bekerja sama dan kualitas hasil layanan kami.
+          </p>
           
           {/* Stats */}
           {!loading && testimonials.length > 0 && (
@@ -180,7 +188,7 @@ export default function Home() {
           ) : (
             <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 max-w-2xl mx-auto text-center border border-white/10 shadow-lg">
               <MessageSquareQuote className="w-12 h-12 text-white/30 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Pernah Menggunakan Jasa Kami?</h3>
+              <h2 className="text-xl font-bold text-white mb-2">Pernah Menggunakan Jasa Kami?</h2>
               <p className="text-neutral-400 mb-6">Bagikan pengalaman Anda untuk membantu client lainnya.</p>
               <div className="flex items-center justify-center gap-4">
                 <button
@@ -244,7 +252,7 @@ export default function Home() {
         ) : testimonials.length === 0 ? (
           <div className="text-center py-20 bg-white/10 backdrop-blur-md rounded-2xl max-w-2xl mx-auto shadow-sm shadow-black/20 relative overflow-hidden" style={{ boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)' }}>
             <MessageSquareQuote className="w-16 h-16 mx-auto text-white/40 mb-6" />
-            <h3 className="text-xl font-semibold text-white mb-2">Belum ada testimoni</h3>
+            <h2 className="text-xl font-semibold text-white mb-2">Belum ada testimoni</h2>
             <p className="text-neutral-400 mb-6">Jadilah client pertama yang membagikan pengalaman Anda.</p>
           </div>
         ) : (
