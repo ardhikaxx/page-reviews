@@ -7,7 +7,6 @@ import { auth, database, googleProvider } from "@/lib/firebase";
 import toast from "react-hot-toast";
 import TestimonialCard, { Testimonial } from "@/components/TestimonialCard";
 import TestimonialForm from "@/components/TestimonialForm";
-import Link from "next/link";
 import { Star, Users, MessageSquareQuote, Loader2, CheckCircle, Trash2, Edit } from "lucide-react";
 import RatingStars from "@/components/RatingStars";
 import Navbar from "@/components/Navbar";
@@ -89,10 +88,11 @@ export default function Home() {
     try {
       await signInWithPopup(auth, googleProvider);
       toast.success("Berhasil masuk!");
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Login error:", error);
       // Ignore errors when user simply closes the popup or clicks multiple times
-      if (error.code !== 'auth/popup-closed-by-user' && error.code !== 'auth/cancelled-popup-request') {
+      const authError = error as { code?: string };
+      if (authError.code !== 'auth/popup-closed-by-user' && authError.code !== 'auth/cancelled-popup-request') {
         toast.error("Gagal masuk dengan Google");
       }
     } finally {
@@ -156,7 +156,7 @@ export default function Home() {
                   </div>
                   <div className="bg-black/20 p-4 rounded-xl border border-white/5">
                     <RatingStars rating={userTestimonial.rating} maxRating={5} className="mb-2 scale-90 origin-left" />
-                    <p className="text-neutral-300 text-sm leading-relaxed">"{userTestimonial.message}"</p>
+                    <p className="text-neutral-300 text-sm leading-relaxed">&quot;{userTestimonial.message}&quot;</p>
                   </div>
                   <div className="flex items-center gap-3">
                     <button 

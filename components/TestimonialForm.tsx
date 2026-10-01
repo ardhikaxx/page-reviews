@@ -78,7 +78,7 @@ export default function TestimonialForm({ user, existingTestimonial, onCancelEdi
         setMessage("");
         setRating(5);
       }
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Error submitting testimonial:", error);
       toast.error("Gagal mengirim testimoni. Silakan coba lagi.");
     } finally {

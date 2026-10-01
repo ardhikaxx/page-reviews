@@ -33,9 +33,10 @@ export default function Navbar() {
       await signInWithPopup(auth, googleProvider);
       toast.success("Berhasil masuk!");
       setIsMenuOpen(false);
-    } catch (error: any) {
+    } catch (error: unknown) {
       console.error("Login error:", error);
-      if (error.code !== 'auth/popup-closed-by-user' && error.code !== 'auth/cancelled-popup-request') {
+      const authError = error as { code?: string };
+      if (authError.code !== 'auth/popup-closed-by-user' && authError.code !== 'auth/cancelled-popup-request') {
         toast.error("Gagal masuk dengan Google");
       }
     } finally {
