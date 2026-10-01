@@ -4,6 +4,7 @@ import { useState } from "react";
 import { formatDistanceToNow } from "date-fns";
 import { id } from "date-fns/locale";
 import RatingStars from "./RatingStars";
+import { maskName } from "@/lib/utils";
 
 export interface Testimonial {
   id: string;
@@ -22,10 +23,6 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
   const formattedDate = testimonial.createdAt
     ? formatDistanceToNow(new Date(testimonial.createdAt), { addSuffix: true, locale: id })
     : "Baru saja";
-
-  const maskedName = testimonial.name
-    ? testimonial.name.split(" ").map(word => word.length > 0 ? word[0] + "***" : "").join(" ")
-    : "A***";
 
   const MAX_LENGTH = 150;
   const shouldTruncate = testimonial.message.length > MAX_LENGTH;
@@ -72,12 +69,12 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
           />
         ) : (
           <div className="w-10 h-10 rounded-full bg-neutral-800 text-neutral-400 flex items-center justify-center font-medium text-sm">
-            {testimonial.name.charAt(0).toUpperCase()}
+            {(testimonial.name || "A").charAt(0).toUpperCase()}
           </div>
         )}
         <div className="flex flex-col">
           <h3 className="text-sm font-bold text-white">
-            {maskedName}
+            {maskName(testimonial.name)}
           </h3>
           <span className="text-[13px] text-[#9CA3AF] mt-0.5">{formattedDate}</span>
         </div>

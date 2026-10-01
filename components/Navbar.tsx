@@ -52,18 +52,6 @@ export default function Navbar() {
             <Link href="/" className="flex items-center gap-2">
               <MessageSquareQuote className="w-7 h-7 text-red-500" />
             </Link>
-            
-            {/* Desktop Left Nav */}
-            <div className="hidden sm:flex items-center">
-              <a 
-                href="https://yanuar-ardhika.vercel.app/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-sm font-medium text-neutral-600 dark:text-neutral-300 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-              >
-                Portofolio
-              </a>
-            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -130,19 +118,9 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       <div className={cn("md:hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-xl overflow-hidden transition-all duration-200", isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none")}>
-        <div className="px-4 pt-4 pb-6 space-y-1">
-          <a 
-            href="https://yanuar-ardhika.vercel.app/" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            onClick={() => setIsMenuOpen(false)}
-            className="block px-3 py-2 rounded-md text-base font-medium text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-          >
-            Portofolio
-          </a>
-          
+        <div className="px-4 py-4 space-y-1">
           {!loading && user ? (
-            <div className="pt-4 pb-3 border-t border-neutral-200 dark:border-neutral-800 mt-4">
+            <div className="pb-1">
               <div className="flex items-center px-3 mb-3">
                 {user.photoURL ? (
                   <img src={user.photoURL} alt="Profile" className="w-10 h-10 rounded-full object-cover" referrerPolicy="no-referrer" />
