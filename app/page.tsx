@@ -106,18 +106,10 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-8 pb-4 px-4 text-white">
         <div className="max-w-4xl mx-auto text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-900/30 text-red-400 text-sm font-medium border border-red-900/50">
+          <h1 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-900/30 text-red-400 text-sm font-medium border border-red-900/50">
             <MessageSquareQuote className="w-4 h-4" />
             <span>Testimoni & Pengalaman Klien</span>
-          </div>
-
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-            Cerita Mereka Setelah Menggunakan <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-rose-400">Jasa Kami</span>
           </h1>
-
-          <p className="text-sm sm:text-base text-neutral-400 max-w-2xl mx-auto leading-relaxed">
-            Transparansi dan kepuasan klien adalah prioritas utama. Lihat ulasan nyata tentang pengalaman bekerja sama dan kualitas hasil layanan kami.
-          </p>
           
           {/* Stats */}
           {!loading && testimonials.length > 0 && (
