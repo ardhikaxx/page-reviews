@@ -46,37 +46,35 @@ export default function Navbar() {
 
   return (
     <div className="sticky top-4 z-50 px-4 sm:px-6 w-full max-w-5xl mx-auto">
-      <nav className="bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md shadow-lg shadow-black/5 dark:shadow-black/20 border border-neutral-200/80 dark:border-neutral-800/80 rounded-full px-4 sm:px-6 relative">
+      <nav className="bg-surface/85 backdrop-blur-md shadow-lg shadow-black/30 border border-foreground/12 rounded-full px-4 sm:px-6 relative">
         <div className="flex justify-between items-center h-14 sm:h-16">
           <div className="flex items-center gap-6">
             <Link href="/" className="flex items-center gap-2">
-              <MessageSquareQuote className="w-7 h-7 text-red-500" />
+              <MessageSquareQuote className="w-7 h-7 text-accent" />
             </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-
-            
             {loading ? (
-              <Loader2 className="w-5 h-5 animate-spin text-neutral-400" />
+              <Loader2 className="w-5 h-5 animate-spin text-foreground/45" />
             ) : user ? (
-              <div className="flex items-center gap-4 ml-4 pl-4 border-l border-neutral-200 dark:border-neutral-800">
+              <div className="flex items-center gap-4 ml-4 pl-4 border-l border-foreground/12">
                 <div className="flex items-center gap-2">
                   {user.photoURL ? (
-                    <img src={user.photoURL} alt="Profile" className="w-8 h-8 rounded-full border border-neutral-200 dark:border-neutral-700 object-cover" referrerPolicy="no-referrer" />
+                    <img src={user.photoURL} alt="Profile" className="w-8 h-8 rounded-full border border-foreground/15 object-cover" referrerPolicy="no-referrer" />
                   ) : (
-                    <div className="w-8 h-8 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 flex items-center justify-center font-bold text-sm">
+                    <div className="w-8 h-8 rounded-full bg-accent/12 text-accent border border-accent/25 flex items-center justify-center font-bold text-sm">
                       {user.displayName?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase()}
                     </div>
                   )}
-                  <span className="text-sm font-medium text-neutral-700 dark:text-neutral-300 max-w-[120px] truncate">
+                  <span className="text-sm font-medium text-foreground max-w-[120px] truncate">
                     {user.displayName || "User"}
                   </span>
                 </div>
                 <button
                   onClick={handleLogoutClick}
-                  className="p-2 text-neutral-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 rounded-full transition-colors"
+                  className="p-2 text-foreground/60 hover:text-accent hover:bg-accent/10 rounded-full transition-colors"
                   aria-label="Logout"
                 >
                   <LogOut className="w-4 h-4" />
@@ -87,7 +85,7 @@ export default function Navbar() {
                 <button
                   onClick={handleGoogleLogin}
                   disabled={isLoggingIn}
-                  className="px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="px-4 py-2 text-sm font-medium text-accent-foreground bg-accent hover:bg-accent-hover rounded-lg transition-colors shadow-sm shadow-accent/20 flex items-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isLoggingIn ? (
                     <Loader2 className="w-4 h-4 animate-spin" />
@@ -109,7 +107,7 @@ export default function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 text-neutral-600 dark:text-neutral-400 focus:outline-none"
+              className="p-2 text-foreground/75 hover:text-foreground focus:outline-none"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -117,26 +115,26 @@ export default function Navbar() {
         </div>
 
       {/* Mobile Menu */}
-      <div className={cn("md:hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-2xl shadow-xl overflow-hidden transition-all duration-200", isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none")}>
+      <div className={cn("md:hidden absolute top-[calc(100%+0.5rem)] left-0 right-0 bg-surface border border-foreground/12 rounded-2xl shadow-xl shadow-black/40 overflow-hidden transition-all duration-200", isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none")}>
         <div className="px-4 py-4 space-y-1">
           {!loading && user ? (
             <div className="pb-1">
               <div className="flex items-center px-3 mb-3">
                 {user.photoURL ? (
-                  <img src={user.photoURL} alt="Profile" className="w-10 h-10 rounded-full object-cover" referrerPolicy="no-referrer" />
+                  <img src={user.photoURL} alt="Profile" className="w-10 h-10 rounded-full object-cover border border-foreground/15" referrerPolicy="no-referrer" />
                 ) : (
-                  <div className="w-10 h-10 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-lg">
+                  <div className="w-10 h-10 rounded-full bg-accent/12 text-accent flex items-center justify-center font-bold text-lg">
                     {user.displayName?.charAt(0).toUpperCase() || user.email?.charAt(0).toUpperCase()}
                   </div>
                 )}
                 <div className="ml-3">
-                  <div className="text-base font-medium text-neutral-800 dark:text-neutral-200">{user.displayName || "User"}</div>
-                  <div className="text-sm font-medium text-neutral-500 dark:text-neutral-400">{user.email}</div>
+                  <div className="text-base font-medium text-foreground">{user.displayName || "User"}</div>
+                  <div className="text-sm font-medium text-foreground/60">{user.email}</div>
                 </div>
               </div>
               <button
                 onClick={() => { handleLogoutClick(); setIsMenuOpen(false); }}
-                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30"
+                className="w-full flex items-center gap-2 px-3 py-2 rounded-md text-base font-medium text-accent hover:bg-accent/10"
               >
                 <LogOut className="w-5 h-5" /> Keluar
               </button>
@@ -146,7 +144,7 @@ export default function Navbar() {
               <button
                 onClick={handleGoogleLogin}
                 disabled={isLoggingIn}
-                className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-red-600 text-white rounded-lg font-medium disabled:opacity-70 disabled:cursor-not-allowed"
+                className="flex items-center justify-center gap-2 w-full px-4 py-2 bg-accent hover:bg-accent-hover text-accent-foreground rounded-lg font-medium transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isLoggingIn ? (
                   <Loader2 className="w-5 h-5 animate-spin" />

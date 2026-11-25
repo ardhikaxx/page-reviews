@@ -104,10 +104,10 @@ export default function Home() {
     <div className="w-full">
       <Navbar />
       {/* Hero Section */}
-      <section className="pt-8 pb-4 px-4 text-white">
+      <section className="pt-8 pb-4 px-4 text-foreground">
         <div className="max-w-4xl mx-auto text-center space-y-4">
-          <h1 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-900/30 text-red-400 text-sm font-medium border border-red-900/50">
-            <MessageSquareQuote className="w-4 h-4" />
+          <h1 className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface text-foreground text-sm font-medium border border-foreground/12 shadow-sm shadow-black/30">
+            <MessageSquareQuote className="w-4 h-4 text-accent" />
             <span>Testimoni & Pengalaman Klien</span>
           </h1>
           
@@ -115,19 +115,19 @@ export default function Home() {
           {!loading && testimonials.length > 0 && (
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12 pt-8">
               <div className="flex flex-col items-center gap-2">
-                <div className="flex items-center gap-2 text-3xl font-bold text-white">
+                <div className="flex items-center gap-2 text-3xl font-bold text-foreground">
                   <span>{averageRating.toFixed(1)}</span>
-                  <Star className="w-6 h-6 fill-yellow-500 text-yellow-500" />
+                  <Star className="w-6 h-6 fill-accent text-accent" />
                 </div>
-                <span className="text-sm text-neutral-500">Rata-rata Rating</span>
+                <span className="text-sm text-foreground/60">Rata-rata Rating</span>
               </div>
-              <div className="hidden sm:block w-px h-12 bg-neutral-200 dark:bg-neutral-800"></div>
+              <div className="hidden sm:block w-px h-12 bg-foreground/15"></div>
               <div className="flex flex-col items-center gap-2">
-                <div className="flex items-center gap-2 text-3xl font-bold text-white">
+                <div className="flex items-center gap-2 text-3xl font-bold text-foreground">
                   <span>{testimonials.length}</span>
-                  <Users className="w-6 h-6 text-red-500" />
+                  <Users className="w-6 h-6 text-accent" />
                 </div>
-                <span className="text-sm text-neutral-500">Total Client</span>
+                <span className="text-sm text-foreground/60">Total Client</span>
               </div>
             </div>
           )}
@@ -139,7 +139,7 @@ export default function Home() {
         {/* CTA or Form */}
         <div className="mb-12">
           {authLoading ? (
-            <div className="flex justify-center"><Loader2 className="w-8 h-8 animate-spin text-neutral-300" /></div>
+            <div className="flex justify-center"><Loader2 className="w-8 h-8 animate-spin text-foreground/60" /></div>
           ) : user ? (
             userTestimonial ? (
               isEditing ? (
@@ -149,25 +149,25 @@ export default function Home() {
                   onCancelEdit={() => setIsEditing(false)} 
                 />
               ) : (
-                <div className="bg-white/5 border border-white/10 p-6 rounded-2xl max-w-2xl mx-auto flex flex-col gap-4 shadow-lg">
-                  <div className="flex items-center gap-2 text-green-400 font-medium">
-                    <CheckCircle className="w-5 h-5" />
+                <div className="bg-surface border border-foreground/12 p-6 rounded-2xl max-w-2xl mx-auto flex flex-col gap-4 shadow-sm shadow-black/30">
+                  <div className="flex items-center gap-2 text-foreground font-medium">
+                    <CheckCircle className="w-5 h-5 text-accent" />
                     <span>Terima kasih! Ulasan Anda telah diterbitkan.</span>
                   </div>
-                  <div className="bg-black/20 p-4 rounded-xl border border-white/5">
+                  <div className="bg-background p-4 rounded-xl border border-foreground/10">
                     <RatingStars rating={userTestimonial.rating} maxRating={5} className="mb-2 scale-90 origin-left" />
-                    <p className="text-neutral-300 text-sm leading-relaxed">&quot;{userTestimonial.message}&quot;</p>
+                    <p className="text-foreground/80 text-sm leading-relaxed">&quot;{userTestimonial.message}&quot;</p>
                   </div>
                   <div className="flex items-center gap-3">
                     <button 
                       onClick={() => setIsEditing(true)}
-                      className="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm rounded-lg font-medium transition-colors flex items-center gap-2"
+                      className="px-4 py-2 bg-foreground/8 hover:bg-foreground/15 text-foreground border border-foreground/10 text-sm rounded-lg font-medium transition-colors flex items-center gap-2"
                     >
                       <Edit className="w-4 h-4" /> Edit Ulasan
                     </button>
                     <button 
                       onClick={handleDeleteTestimonial}
-                      className="px-4 py-2 bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 text-sm rounded-lg font-medium transition-colors border border-red-500/20 flex items-center gap-2"
+                      className="px-4 py-2 bg-accent/10 hover:bg-accent/20 text-accent text-sm rounded-lg font-medium transition-colors border border-accent/25 flex items-center gap-2"
                     >
                       <Trash2 className="w-4 h-4" /> Hapus
                     </button>
@@ -178,15 +178,15 @@ export default function Home() {
               <TestimonialForm user={user} />
             )
           ) : (
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-8 max-w-2xl mx-auto text-center border border-white/10 shadow-lg">
-              <MessageSquareQuote className="w-12 h-12 text-white/30 mx-auto mb-4" />
-              <h2 className="text-xl font-bold text-white mb-2">Pernah Menggunakan Jasa Kami?</h2>
-              <p className="text-neutral-400 mb-6">Bagikan pengalaman Anda untuk membantu client lainnya.</p>
+            <div className="bg-surface rounded-2xl p-8 max-w-2xl mx-auto text-center border border-foreground/12 shadow-sm shadow-black/30">
+              <MessageSquareQuote className="w-12 h-12 text-accent/70 mx-auto mb-4" />
+              <h2 className="text-xl font-bold text-foreground mb-2">Pernah Menggunakan Jasa Kami?</h2>
+              <p className="text-foreground/65 mb-6">Bagikan pengalaman Anda untuk membantu client lainnya.</p>
               <div className="flex items-center justify-center gap-4">
                 <button
                   onClick={handleGoogleLogin}
                   disabled={isLoggingIn}
-                  className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-full font-medium transition-colors shadow-lg shadow-red-600/20 flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
+                  className="px-6 py-2.5 bg-accent hover:bg-accent-hover text-accent-foreground rounded-full font-medium transition-colors shadow-lg shadow-accent/20 flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
                   {isLoggingIn ? (
                     <Loader2 className="w-5 h-5 animate-spin" />
@@ -209,22 +209,22 @@ export default function Home() {
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div key={i} className="break-inside-avoid">
-                <div className="bg-white/5 animate-pulse rounded-2xl p-6 sm:p-7 flex flex-col h-[220px] shadow-sm shadow-black/20 relative overflow-hidden" style={{ boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)' }}>
+                <div className="bg-surface border border-foreground/10 animate-pulse rounded-2xl p-6 sm:p-7 flex flex-col h-[220px] shadow-sm shadow-black/30 relative overflow-hidden">
                   <div className="flex gap-1 mb-4">
                     {[1, 2, 3, 4, 5].map(star => (
-                      <div key={star} className="w-4 h-4 bg-white/10 rounded-full" />
+                      <div key={star} className="w-4 h-4 bg-foreground/10 rounded-full" />
                     ))}
                   </div>
                   <div className="flex-grow space-y-3 mb-6">
-                    <div className="h-4 bg-white/10 rounded-md w-full" />
-                    <div className="h-4 bg-white/10 rounded-md w-11/12" />
-                    <div className="h-4 bg-white/10 rounded-md w-4/5" />
+                    <div className="h-4 bg-foreground/10 rounded-md w-full" />
+                    <div className="h-4 bg-foreground/10 rounded-md w-11/12" />
+                    <div className="h-4 bg-foreground/10 rounded-md w-4/5" />
                   </div>
                   <div className="flex items-center gap-3 mt-auto">
-                    <div className="w-10 h-10 rounded-full bg-white/10" />
+                    <div className="w-10 h-10 rounded-full bg-foreground/10" />
                     <div className="flex flex-col gap-2">
-                      <div className="h-3.5 bg-white/10 rounded w-24" />
-                      <div className="h-2.5 bg-white/10 rounded w-16" />
+                      <div className="h-3.5 bg-foreground/10 rounded w-24" />
+                      <div className="h-2.5 bg-foreground/10 rounded w-16" />
                     </div>
                   </div>
                 </div>
@@ -232,20 +232,20 @@ export default function Home() {
             ))}
           </div>
         ) : error ? (
-          <div className="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 p-6 rounded-2xl text-center max-w-2xl mx-auto border border-red-100 dark:border-red-900/30">
+          <div className="bg-accent/10 text-foreground p-6 rounded-2xl text-center max-w-2xl mx-auto border border-accent/30">
             <p>{error}</p>
             <button 
               onClick={() => window.location.reload()} 
-              className="mt-4 px-4 py-2 bg-red-100 dark:bg-red-900/50 hover:bg-red-200 dark:hover:bg-red-900 rounded-lg transition-colors"
+              className="mt-4 px-4 py-2 bg-accent hover:bg-accent-hover text-accent-foreground rounded-lg font-medium transition-colors"
             >
               Coba Lagi
             </button>
           </div>
         ) : testimonials.length === 0 ? (
-          <div className="text-center py-20 bg-white/10 backdrop-blur-md rounded-2xl max-w-2xl mx-auto shadow-sm shadow-black/20 relative overflow-hidden" style={{ boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)' }}>
-            <MessageSquareQuote className="w-16 h-16 mx-auto text-white/40 mb-6" />
-            <h2 className="text-xl font-semibold text-white mb-2">Belum ada testimoni</h2>
-            <p className="text-neutral-400 mb-6">Jadilah client pertama yang membagikan pengalaman Anda.</p>
+          <div className="text-center py-20 bg-surface rounded-2xl max-w-2xl mx-auto border border-foreground/12 shadow-sm shadow-black/30 relative overflow-hidden">
+            <MessageSquareQuote className="w-16 h-16 mx-auto text-accent/60 mb-6" />
+            <h2 className="text-xl font-semibold text-foreground mb-2">Belum ada testimoni</h2>
+            <p className="text-foreground/65 mb-6">Jadilah client pertama yang membagikan pengalaman Anda.</p>
           </div>
         ) : (
           <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">

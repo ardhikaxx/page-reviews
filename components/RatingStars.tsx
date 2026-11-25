@@ -40,8 +40,8 @@ export default function RatingStars({
               className={cn(
                 "w-5 h-5",
                 isActive
-                  ? "fill-yellow-400 text-yellow-400"
-                  : "fill-gray-200 text-gray-200 dark:fill-gray-700 dark:text-gray-700"
+                  ? "fill-accent text-accent"
+                  : "fill-foreground/12 text-foreground/20"
               )}
             />
           </button>

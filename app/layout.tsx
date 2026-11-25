@@ -51,14 +51,35 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id" className="scroll-smooth dark" data-scroll-behavior="smooth">
-      <body className={`${inter.className} bg-black text-neutral-100 antialiased min-h-screen flex flex-col selection:bg-red-900 selection:text-white relative`}>
+      <body className={`${inter.className} bg-background text-foreground antialiased min-h-screen flex flex-col selection:bg-accent selection:text-accent-foreground relative`}>
         {/* Fixed Background Layer */}
-        <div className="fixed inset-0 pointer-events-none -z-10" style={{ background: 'radial-gradient(circle at bottom center, #880808 0%, #000000 70%)' }} />
+        <div className="fixed inset-0 pointer-events-none -z-10" style={{ background: 'radial-gradient(circle at bottom center, var(--bg-glow) 0%, var(--background) 70%)' }} />
         <main className="flex-grow">
           {children}
         </main>
 
-        <Toaster position="bottom-center" />
+        <Toaster
+          position="bottom-center"
+          toastOptions={{
+            style: {
+              background: "var(--toast-bg)",
+              color: "var(--toast-fg)",
+              border: "1px solid var(--toast-border)",
+            },
+            success: {
+              iconTheme: {
+                primary: "#d9541e",
+                secondary: "#f3eee3",
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: "#d9541e",
+                secondary: "#f3eee3",
+              },
+            },
+          }}
+        />
         <Analytics />
         <SpeedInsights />
       </body>

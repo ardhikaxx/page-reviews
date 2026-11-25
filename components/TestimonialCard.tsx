@@ -31,10 +31,10 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
     : testimonial.message;
 
   return (
-    <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 sm:p-7 flex flex-col h-full shadow-sm shadow-black/20 relative overflow-hidden transition-all duration-300" style={{ boxShadow: 'inset 0 1px 1px rgba(255, 255, 255, 0.15)' }}>
+    <div className="bg-surface border border-foreground/10 rounded-2xl p-6 sm:p-7 flex flex-col h-full shadow-sm shadow-black/30 relative overflow-hidden transition-all duration-300 hover:border-accent/35 hover:shadow-md hover:shadow-black/40">
       {/* Decorative Quote Icon */}
       <svg 
-        className="absolute top-4 right-4 w-16 h-16 text-white opacity-[0.03] pointer-events-none" 
+        className="absolute top-4 right-4 w-16 h-16 text-foreground opacity-[0.04] pointer-events-none" 
         viewBox="0 0 24 24" 
         fill="currentColor"
       >
@@ -46,13 +46,13 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
       </div>
       
       <div className="flex-grow mb-6">
-        <p className="text-[#D1D5DB] text-[15px] leading-relaxed transition-all duration-300">
+        <p className="text-foreground/80 text-[15px] leading-relaxed transition-all duration-300">
           {displayMessage}
         </p>
         {shouldTruncate && (
           <button 
             onClick={() => setIsExpanded(!isExpanded)}
-            className="text-red-400 hover:text-red-300 text-[13px] font-medium mt-2 transition-colors focus:outline-none"
+            className="text-accent hover:text-accent-hover text-[13px] font-medium mt-2 transition-colors focus:outline-none"
           >
             {isExpanded ? "Tutup" : "Baca selengkapnya"}
           </button>
@@ -64,19 +64,19 @@ export default function TestimonialCard({ testimonial }: { testimonial: Testimon
           <img
             src={testimonial.photoURL}
             alt={testimonial.name}
-            className="w-10 h-10 rounded-full object-cover"
+            className="w-10 h-10 rounded-full object-cover border border-foreground/10"
             referrerPolicy="no-referrer"
           />
         ) : (
-          <div className="w-10 h-10 rounded-full bg-neutral-800 text-neutral-400 flex items-center justify-center font-medium text-sm">
+          <div className="w-10 h-10 rounded-full bg-foreground text-background flex items-center justify-center font-medium text-sm">
             {(testimonial.name || "A").charAt(0).toUpperCase()}
           </div>
         )}
         <div className="flex flex-col">
-          <h3 className="text-sm font-bold text-white">
+          <h3 className="text-sm font-bold text-foreground">
             {maskName(testimonial.name)}
           </h3>
-          <span className="text-[13px] text-[#9CA3AF] mt-0.5">{formattedDate}</span>
+          <span className="text-[13px] text-foreground/55 mt-0.5">{formattedDate}</span>
         </div>
       </div>
     </div>

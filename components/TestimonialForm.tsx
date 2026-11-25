@@ -90,13 +90,13 @@ export default function TestimonialForm({ user, existingTestimonial, onCancelEdi
     <div className="max-w-2xl mx-auto w-full">
       <form 
         onSubmit={handleSubmit} 
-        className="bg-white/5 backdrop-blur-md rounded-2xl p-4 sm:p-5 shadow-sm shadow-black/20 border border-white/10 flex flex-col gap-3 transition-all focus-within:bg-white/10 focus-within:border-white/20 relative"
+        className="bg-surface rounded-2xl p-4 sm:p-5 shadow-sm shadow-black/30 border border-foreground/12 flex flex-col gap-3 transition-all focus-within:border-accent/50 focus-within:ring-2 focus-within:ring-accent/15 relative"
       >
         {existingTestimonial && onCancelEdit && (
           <button 
             type="button" 
             onClick={onCancelEdit}
-            className="absolute top-4 right-4 text-white/50 hover:text-white/80 transition-colors"
+            className="absolute top-4 right-4 text-foreground/50 hover:text-foreground transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -110,20 +110,20 @@ export default function TestimonialForm({ user, existingTestimonial, onCancelEdi
             onChange={(e) => setMessage(e.target.value)}
             disabled={isSubmitting}
             placeholder="Bagikan pengalaman Anda menggunakan jasa kami..."
-            className="w-full bg-transparent px-2 pt-2 pb-6 text-sm md:text-base text-white placeholder:text-white/30 resize-none outline-none disabled:opacity-50"
+            className="w-full bg-transparent px-2 pt-2 pb-6 text-sm md:text-base text-foreground placeholder:text-foreground/35 resize-none outline-none disabled:opacity-50"
             required
           />
           <div className={cn(
             "absolute bottom-1 right-2 text-[11px] font-medium transition-colors",
-            message.length < 10 ? "text-red-400" : "text-white/30"
+            message.length < 10 ? "text-accent" : "text-foreground/40"
           )}>
             {message.length}/500
           </div>
         </div>
         
         <div className="px-2 pb-2">
-          <div className="flex items-center gap-1.5 mb-2 text-xs font-medium text-white/50">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="flex items-center gap-1.5 mb-2 text-xs font-medium text-foreground/60">
+            <Sparkles className="w-3.5 h-3.5 text-accent" />
             <span>Saran Cepat:</span>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -132,7 +132,7 @@ export default function TestimonialForm({ user, existingTestimonial, onCancelEdi
                 key={idx}
                 type="button"
                 onClick={() => handleSuggestionClick(suggestion)}
-                className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-xs text-neutral-300 hover:text-white transition-colors text-left"
+                className="px-3 py-1.5 rounded-full bg-background hover:bg-accent/10 border border-foreground/12 hover:border-accent/30 text-xs text-foreground/80 hover:text-foreground transition-colors text-left"
               >
                 {suggestion}
               </button>
@@ -140,7 +140,7 @@ export default function TestimonialForm({ user, existingTestimonial, onCancelEdi
           </div>
         </div>
         
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-t border-white/10">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2 border-t border-foreground/10">
           <RatingStars 
             rating={rating} 
             interactive={true} 
@@ -153,7 +153,7 @@ export default function TestimonialForm({ user, existingTestimonial, onCancelEdi
                 type="button"
                 onClick={onCancelEdit}
                 disabled={isSubmitting}
-                className="w-full sm:w-auto py-2 px-6 bg-white/5 hover:bg-white/10 text-white text-sm rounded-full font-bold transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full sm:w-auto py-2 px-6 bg-foreground/8 hover:bg-foreground/15 text-foreground text-sm rounded-full font-bold transition-all disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 Batal
               </button>
@@ -161,7 +161,7 @@ export default function TestimonialForm({ user, existingTestimonial, onCancelEdi
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full sm:w-auto py-2 px-6 bg-red-600 hover:bg-red-700 text-white text-sm rounded-full font-bold transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              className="w-full sm:w-auto py-2 px-6 bg-accent hover:bg-accent-hover text-accent-foreground text-sm rounded-full font-bold transition-all shadow-sm shadow-accent/20 disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
             >
               {isSubmitting ? (
                 <Loader2 className="w-4 h-4 animate-spin" />
